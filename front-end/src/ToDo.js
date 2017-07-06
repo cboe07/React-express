@@ -7,19 +7,20 @@ class ToDo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			
+			theClass: []
 		}
+        this.addTask = this.addTask.bind(this);
        
 	}
 
     // componentDidMount runs AFTER the first render()
     componentDidMount() {
         //getJSON request to localhost:3000...that's where Express
-        $.getJSON('http://localhost:3000/getStudents', (studentsFromApi)=>{
+        $.getJSON('http://localhost:3000/getTasks', (tasksFromApi)=>{
             //log the JSON response from Express
-            console.log(studentsFromApi);
+            console.log(tasksFromApi);
             this.setState({
-                theClass: studentsFromApi
+                theClass: tasksFromApi
             })
         });
         // Update the state..this will cause a re-render
@@ -28,8 +29,8 @@ class ToDo extends Component {
         // })
     }
 
-    addStudent(event){
-        var studentToAdd = event.target.parentNode.childNodes[0].value;
+    addTask(event){
+        var taskToAdd = event.target.parentNode.childNodes[0].value;
         // var studentToAdd = document.getElementById('newStudent')
         // console.log(studentToAdd);
         // This is a POST request, se we cant use $.getJSON (omly does get)
@@ -40,11 +41,11 @@ class ToDo extends Component {
         // because we're mapping through state.
         $.ajax({
             method: "POST",
-            url: "http://localhost:3000/addStudent",
-            data: {name: studentToAdd}
-        }).done((studentsArray)=>{
+            url: "http://localhost:3000/addTask",
+            data: {name: taskToAdd}
+        }).done((tasksArray)=>{
             this.setState({
-                theClass: studentsArray
+                theClass: tasksArray
             })
         })
     }
@@ -55,8 +56,8 @@ class ToDo extends Component {
         // Create an array to dump into our return. It will contain components or HTML tags
 		var theClassArray = [];
         // Loop through our state var. The first time through, it will be empty
-		this.state.theClass.map((student,index)=>{
-			theClassArray.push(<li key={index}>{student.name}</li>);
+		this.state.theClass.map((task,index)=>{
+			theClassArray.push(<li key={index}>{task.taskName}{task.taskDate}</li>);
 		});
 
 		return (
@@ -69,8 +70,8 @@ class ToDo extends Component {
 					To get started, edit <code>src/App.js</code> and save to reload.
 				</p>
                 <div className='add-box'>
-                    <input type='text' id='newStudent' />
-                    <button onClick={this.addStudent}>Add Student</button>
+                    <input type='text' id='newTask' />
+                    <button onClick={this.addTask}>Add Task</button>
                 </div>
                 <p>
                     {theClassArray}
