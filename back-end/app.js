@@ -10,6 +10,7 @@ var users = require('./routes/users');
 
 var app = express();
 //Opens the door for people to make AJAX requests to us
+// Update headers to handle CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

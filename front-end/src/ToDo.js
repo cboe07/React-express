@@ -3,14 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
 
-class App extends Component {
+class ToDo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			theClass: []
+			
 		}
-        // Make sure addStudent uses the corect 'this'
-        this.addStudent = this.addStudent.bind(this);
+       
 	}
 
     // componentDidMount runs AFTER the first render()
@@ -81,4 +80,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default ToDo;
