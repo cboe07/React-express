@@ -1,7 +1,14 @@
+// 3rd party modules
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import $ from 'jquery';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+
+// Custom modules
+import Home from './Home';
+import Delete from './Delete';
+import Read from './Read';
+import Edit from './Edit';
 
 class ToDo extends Component {
 	constructor(props) {
@@ -53,6 +60,17 @@ class ToDo extends Component {
 
 	render() {
 
+        return(
+            <Router>
+                <div className="col-sm-12 to-do-app">
+                    <Route exact={true} path="/" component={Home} />
+                    <Route path="/task/delete/:taskId" component={Delete} />
+                    <Route path="/task/read/:taskId" component={Read} />
+                    <Route path="/task/edit/:taskId" component={Edit} />
+                </div>
+            </Router>
+        )
+
         // Create an array to dump into our return. It will contain components or HTML tags
 		var theClassArray = [];
         // Loop through our state var. The first time through, it will be empty
@@ -63,11 +81,11 @@ class ToDo extends Component {
 		return (
 			<div className="App">
 				<div className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
+					
 					<h2>Welcome to React</h2>
 				</div>
 				<p className="App-intro">
-					To get started, edit <code>src/App.js</code> and save to reload.
+					// To get started, edit <code>src/App.js</code> and save to reload.
 				</p>
                 <div className='add-box'>
                     <input type='text' id='newTask' />
