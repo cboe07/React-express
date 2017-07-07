@@ -14,7 +14,7 @@ class Edit extends Component{
 
 	componentDidMount() {
         var taskId = this.props.match.params.taskId
-        $.getJSON(`http://localhost:3000/getTask/${taskId}`, (taskData)=>{
+        $.getJSON(`http://localhost:3000/getTask/${taskId}?api_key=abcdefg`, (taskData)=>{
             this.setState({
                 taskData: taskData
             });

@@ -30,7 +30,7 @@ function validateKey(key){
 
 // Setup a route to handle React's first request
 router.get('/getTasks', function(req, res, next) {
-	var isKeyValid = validateKey(req.query.apiKey);
+	var isKeyValid = validateKey(req.query.api_key);
 	isKeyValid.then((bool)=>{
 		if(bool == true){
 			connection.query('SELECT * FROM tasks', (error, results)=>{

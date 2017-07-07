@@ -15,7 +15,7 @@ class Delete extends Component{
 
 	componentDidMount() {
 		var taskId = this.props.match.params.taskId;
-		$.getJSON(`http://localhost:3000/getTask/${taskId}`, (taskData)=>{
+		$.getJSON(`http://localhost:3000/getTask/${taskId}?api_key=abcdefg`, (taskData)=>{
 			this.setState({
 				taskData: taskData
 			})
@@ -26,7 +26,7 @@ class Delete extends Component{
 		var taskId = this.props.match.params.taskId;
 		$.ajax({
             method: "POST",
-            url: "http://localhost:3000/deleteTask",
+            url: "http://localhost:3000/deleteTask?api_key=abcdefg",
             data: {
             	taskId: taskId
             }
