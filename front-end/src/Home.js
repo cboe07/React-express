@@ -17,7 +17,7 @@ class Home extends Component{
 
 	componentDidMount() {
         //getJSON request to localhost:3000...that's where Express
-        $.getJSON('http://localhost:3000/getTasks', (tasksFromApi)=>{
+        $.getJSON('http://localhost:3000/getTasks?api_key=abcdefg', (tasksFromApi)=>{
             //log the JSON response from Express
             // console.log(tasksFromApi);
             this.setState({
@@ -47,7 +47,7 @@ class Home extends Component{
         // because we're mapping through state.
         $.ajax({
             method: "POST",
-            url: "http://localhost:3000/addTask",
+            url: "http://localhost:3000/addTask?api_key=abcdefg",
             data: {
             	taskName: newTask,
             	taskDate: newTaskDate,
@@ -83,18 +83,16 @@ class Home extends Component{
 					<img src={logo} className="App-logo" alt="logo" />
 					<h2>Welcome to React</h2>
 				</div>
-				<p className="App-intro">
-					// To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
+				
                 <form onSubmit={this.addNewTask} className='add-box'>
                     <input type='text' id='new-task' placeholder="New Task..."/>
                     <input type='date' id='new-task-date' />
                     <input type='text' id='new-task-info' placeholder="Enter Task Info..."/>
                     <button className='btn btn-primary' onClick={this.addTask}>Add Task</button>
                 </form>
-                <p>
+                <div>
                     {taskArray}
-                </p>
+                </div>
 			</div>
 		)
 	}

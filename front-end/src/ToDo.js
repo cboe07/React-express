@@ -78,24 +78,18 @@ class ToDo extends Component {
 			theClassArray.push(<li key={index}>{task.taskName}{task.taskDate}</li>);
 		});
 
-		return (
-			<div className="App">
-				<div className="App-header">
-					
-					<h2>Welcome to React</h2>
-				</div>
-				<p className="App-intro">
-					// To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
-                <div className='add-box'>
-                    <input type='text' id='newTask' />
-                    <button onClick={this.addTask}>Add Task</button>
-                </div>
-                <p>
-                    {theClassArray}
-                </p>
-			</div>
-		);
+		// return (
+		// 	<div className="App">
+				
+  //               <div className='add-box'>
+  //                   <input type='text' id='newTask' />
+  //                   <button onClick={this.addTask}>Add Task</button>
+  //               </div>
+  //               <p>
+  //                   {theClassArray}
+  //               </p>
+		// 	</div>
+		// );
 	}
 }
 
